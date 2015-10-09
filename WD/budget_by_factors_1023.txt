@@ -1,0 +1,632 @@
+> source("budget_by_factors.r",echo=T)
+
+> budget.CB.by.grade.summary<-by(budget[,c("CB08","CB09","CB10","CB.total")],results.7$grade,summary)
+
+> print(budget.CB.by.grade.summary)
+results.7$grade: A
+      CB08            CB09            CB10          CB.total     
+ Min.   : 25.0   Min.   : 60.0   Min.   :  0.0   Min.   : 125.0  
+ 1st Qu.:112.0   1st Qu.:190.0   1st Qu.:167.0   1st Qu.: 517.3  
+ Median :174.0   Median :258.5   Median :283.0   Median : 788.0  
+ Mean   :174.9   Mean   :277.0   Mean   :303.8   Mean   : 755.7  
+ 3rd Qu.:241.0   3rd Qu.:331.0   3rd Qu.:418.0   3rd Qu.:1008.0  
+ Max.   :487.0   Max.   :548.0   Max.   :744.0   Max.   :1479.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: B
+      CB08             CB09             CB10           CB.total     
+ Min.   :  38.8   Min.   : 112.0   Min.   :  48.0   Min.   : 403.0  
+ 1st Qu.: 122.1   1st Qu.: 260.4   1st Qu.: 211.9   1st Qu.: 638.6  
+ Median : 214.5   Median : 304.5   Median : 258.5   Median : 796.5  
+ Mean   : 270.0   Mean   : 499.5   Mean   : 432.5   Mean   :1202.0  
+ 3rd Qu.: 326.9   3rd Qu.: 508.2   3rd Qu.: 394.7   3rd Qu.:1278.4  
+ Max.   :1323.0   Max.   :3432.0   Max.   :2525.0   Max.   :7280.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: C
+      CB08            CB09             CB10           CB.total     
+ Min.   :  0.0   Min.   :   0.0   Min.   :   0.0   Min.   :  38.0  
+ 1st Qu.: 49.5   1st Qu.: 110.1   1st Qu.:  82.5   1st Qu.: 338.1  
+ Median :103.0   Median : 200.0   Median : 187.0   Median : 474.0  
+ Mean   :160.7   Mean   : 275.6   Mean   : 301.2   Mean   : 737.5  
+ 3rd Qu.:221.5   3rd Qu.: 325.5   3rd Qu.: 288.8   3rd Qu.: 819.5  
+ Max.   :990.0   Max.   :1607.8   Max.   :2496.0   Max.   :3393.6  
+
+> budget.CB.by.grade.trmean<-by(budget[,c("CB08","CB09","CB10","CB.total")],results.7$grade,mean, trim=5)
+
+> print(budget.CB.by.grade.trmean)
+results.7$grade: A
+    CB08     CB09     CB10 CB.total 
+   174.0    258.5    283.0    788.0 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: B
+    CB08     CB09     CB10 CB.total 
+   214.5    304.5    258.5    796.5 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: C
+    CB08     CB09     CB10 CB.total 
+     103      200      187      474 
+
+> budget.PP.by.grade.summary<-by(budget[,c("PP08","PP09","PP10","PP.total")],results.7$grade,summary)
+
+> print(budget.PP.by.grade.summary)
+results.7$grade: A
+      PP08             PP09             PP10           PP.total   
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0  
+ 1st Qu.: 230.0   1st Qu.: 555.0   1st Qu.: 250.0   1st Qu.:1086  
+ Median : 424.0   Median :1129.5   Median : 482.0   Median :1986  
+ Mean   : 485.7   Mean   : 875.3   Mean   : 712.1   Mean   :2073  
+ 3rd Qu.: 789.0   3rd Qu.:1256.0   3rd Qu.:1050.0   3rd Qu.:3083  
+ Max.   :1008.0   Max.   :1452.0   Max.   :1705.0   Max.   :4050  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: B
+      PP08             PP09             PP10           PP.total     
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0.0  
+ 1st Qu.:   0.0   1st Qu.:  25.0   1st Qu.:  22.0   1st Qu.: 201.4  
+ Median : 190.8   Median : 386.0   Median : 421.9   Median :1006.4  
+ Mean   : 434.4   Mean   : 649.5   Mean   : 663.5   Mean   :1747.4  
+ 3rd Qu.: 626.4   3rd Qu.:1200.0   3rd Qu.:1167.3   3rd Qu.:3214.4  
+ Max.   :1639.0   Max.   :2113.0   Max.   :2375.0   Max.   :5813.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: C
+      PP08             PP09             PP10           PP.total     
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0.0  
+ 1st Qu.:   8.5   1st Qu.:   0.0   1st Qu.: 117.7   1st Qu.: 456.7  
+ Median : 147.0   Median : 403.0   Median : 439.0   Median :1188.0  
+ Mean   : 259.1   Mean   : 473.3   Mean   : 585.2   Mean   :1317.7  
+ 3rd Qu.: 409.5   3rd Qu.: 604.5   3rd Qu.: 653.5   3rd Qu.:1778.5  
+ Max.   :1624.0   Max.   :2240.0   Max.   :4065.0   Max.   :5516.0  
+
+> budget.PP.by.grade.trmean<-by(budget[,c("PP08","PP09","PP10","PP.total")],results.7$grade,mean, trim=5)
+
+> print(budget.PP.by.grade.trmean)
+results.7$grade: A
+    PP08     PP09     PP10 PP.total 
+   424.0   1129.5    482.0   1986.3 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: B
+    PP08     PP09     PP10 PP.total 
+   190.8    386.0    421.9   1006.4 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: C
+    PP08     PP09     PP10 PP.total 
+     147      403      439     1188 
+
+> budget.PM.by.grade.summary<-by(budget[,c("PM08","PM09","PM10","PM.total")],results.7$grade,summary)
+
+> print(budget.PM.by.grade.summary)
+results.7$grade: A
+      PM08             PM09           PM10           PM.total   
+ Min.   :   0.0   Min.   : 599   Min.   : 280.0   Min.   :1115  
+ 1st Qu.: 227.0   1st Qu.: 646   1st Qu.: 686.7   1st Qu.:1926  
+ Median : 542.6   Median : 901   Median : 865.0   Median :2270  
+ Mean   : 607.8   Mean   :1010   Mean   : 908.0   Mean   :2526  
+ 3rd Qu.: 788.4   3rd Qu.:1299   3rd Qu.:1209.0   3rd Qu.:3308  
+ Max.   :1477.0   Max.   :1999   Max.   :1528.0   Max.   :4000  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: B
+      PM08            PM09             PM10           PM.total   
+ Min.   :  0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0  
+ 1st Qu.:182.2   1st Qu.: 376.0   1st Qu.: 383.5   1st Qu.:1160  
+ Median :329.0   Median : 675.1   Median : 652.1   Median :1750  
+ Mean   :381.5   Mean   : 815.5   Mean   : 747.9   Mean   :1945  
+ 3rd Qu.:616.0   3rd Qu.:1163.2   3rd Qu.:1075.0   3rd Qu.:2872  
+ Max.   :914.0   Max.   :2006.9   Max.   :1629.0   Max.   :4199  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: C
+      PM08             PM09             PM10           PM.total     
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   : 121.0  
+ 1st Qu.:  86.5   1st Qu.: 213.2   1st Qu.: 331.0   1st Qu.: 995.8  
+ Median : 287.0   Median : 695.0   Median : 749.0   Median :2018.0  
+ Mean   : 370.2   Mean   : 871.2   Mean   : 804.5   Mean   :2045.8  
+ 3rd Qu.: 592.8   3rd Qu.:1112.0   3rd Qu.:1157.0   3rd Qu.:2696.2  
+ Max.   :1109.0   Max.   :3948.0   Max.   :1903.0   Max.   :6011.0  
+
+> budget.PM.by.grade.trmean<-by(budget[,c("PM08","PM09","PM10","PM.total")],results.7$grade,mean, trim=5)
+
+> print(budget.PM.by.grade.trmean)
+results.7$grade: A
+    PM08     PM09     PM10 PM.total 
+   542.6    901.0    865.0   2270.0 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: B
+    PM08     PM09     PM10 PM.total 
+   329.0    675.1    652.1   1749.8 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: C
+    PM08     PM09     PM10 PM.total 
+     287      695      749     2018 
+
+> budget.RD.by.grade.summary<-by(budget[,c("RD08","RD09","RD10","RD.total")],results.7$grade,summary)
+
+> print(budget.RD.by.grade.summary)
+results.7$grade: A
+      RD08             RD09             RD10          RD.total     
+ Min.   :  0.00   Min.   :   0.0   Min.   :  0.0   Min.   :   0.0  
+ 1st Qu.:  0.00   1st Qu.:   0.0   1st Qu.:  0.0   1st Qu.:  45.0  
+ Median : 50.00   Median : 100.0   Median :100.0   Median : 400.0  
+ Mean   : 87.53   Mean   : 206.4   Mean   :180.9   Mean   : 474.8  
+ 3rd Qu.:137.00   3rd Qu.: 303.0   3rd Qu.:304.0   3rd Qu.: 631.0  
+ Max.   :362.00   Max.   :1283.0   Max.   :708.0   Max.   :1846.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: B
+      RD08             RD09             RD10            RD.total     
+ Min.   :  0.00   Min.   :  0.00   Min.   :   0.00   Min.   :   0.0  
+ 1st Qu.:  0.00   1st Qu.:  0.00   1st Qu.:   0.00   1st Qu.:   0.0  
+ Median :  0.00   Median : 30.00   Median :   5.00   Median :  40.5  
+ Mean   : 62.33   Mean   : 95.86   Mean   : 100.05   Mean   : 258.2  
+ 3rd Qu.:115.88   3rd Qu.:136.00   3rd Qu.:  56.25   3rd Qu.: 359.8  
+ Max.   :272.50   Max.   :578.00   Max.   :1533.00   Max.   :2127.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: C
+      RD08             RD09             RD10           RD.total     
+ Min.   :  0.00   Min.   :  0.00   Min.   :  0.00   Min.   :   0.0  
+ 1st Qu.:  0.00   1st Qu.:  0.00   1st Qu.:  0.00   1st Qu.:   0.0  
+ Median :  0.00   Median :  0.00   Median :  0.00   Median :  55.0  
+ Mean   : 40.28   Mean   : 85.11   Mean   : 98.52   Mean   : 223.9  
+ 3rd Qu.:  7.00   3rd Qu.:161.15   3rd Qu.:100.00   3rd Qu.: 409.5  
+ Max.   :463.00   Max.   :569.00   Max.   :549.00   Max.   :1374.0  
+
+> budget.RD.by.grade.trmean<-by(budget[,c("RD08","RD09","RD10","RD.total")],results.7$grade,mean, trim=5)
+
+> print(budget.RD.by.grade.trmean)
+results.7$grade: A
+    RD08     RD09     RD10 RD.total 
+      50      100      100      400 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: B
+    RD08     RD09     RD10 RD.total 
+     0.0     30.0      5.0     40.5 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: C
+    RD08     RD09     RD10 RD.total 
+       0        0        0       55 
+
+> budget.CT.by.grade.summary<-by(budget[,c("CT08","CT09","CT10","CT.total")],results.7$grade,summary)
+
+> print(budget.CT.by.grade.summary)
+results.7$grade: A
+      CT08            CT09            CT10         CT.total     
+ Min.   :  0.0   Min.   :  0.0   Min.   :   0   Min.   :   0.0  
+ 1st Qu.:  0.0   1st Qu.: 70.0   1st Qu.: 100   1st Qu.: 300.0  
+ Median : 76.0   Median :210.0   Median : 152   Median : 563.0  
+ Mean   :207.9   Mean   :310.5   Mean   : 249   Mean   : 767.4  
+ 3rd Qu.:314.0   3rd Qu.:500.0   3rd Qu.: 297   3rd Qu.:1150.0  
+ Max.   :919.0   Max.   :826.0   Max.   :1073   Max.   :2757.3  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: B
+      CT08             CT09             CT10            CT.total     
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.00   Min.   :   0.0  
+ 1st Qu.:  37.5   1st Qu.: 248.2   1st Qu.:  89.67   1st Qu.: 668.9  
+ Median : 313.9   Median : 648.0   Median : 400.00   Median :1276.9  
+ Mean   : 402.0   Mean   : 797.8   Mean   : 558.09   Mean   :1757.8  
+ 3rd Qu.: 640.5   3rd Qu.:1161.2   3rd Qu.: 878.25   3rd Qu.:2632.7  
+ Max.   :1378.0   Max.   :2831.0   Max.   :2041.00   Max.   :4622.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: C
+      CT08            CT09             CT10           CT.total     
+ Min.   :  0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0.0  
+ 1st Qu.:  0.0   1st Qu.:   0.0   1st Qu.:  33.5   1st Qu.: 109.5  
+ Median : 86.0   Median : 110.0   Median : 270.0   Median : 637.0  
+ Mean   :157.8   Mean   : 344.2   Mean   : 479.6   Mean   : 981.6  
+ 3rd Qu.:243.0   3rd Qu.: 657.5   3rd Qu.: 580.0   3rd Qu.:1453.0  
+ Max.   :650.0   Max.   :1485.0   Max.   :3244.0   Max.   :4770.0  
+
+> budget.CT.by.grade.trmean<-by(budget[,c("CT08","CT09","CT10","CT.total")],results.7$grade,mean, trim=5)
+
+> print(budget.CT.by.grade.trmean)
+results.7$grade: A
+    CT08     CT09     CT10 CT.total 
+      76      210      152      563 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: B
+    CT08     CT09     CT10 CT.total 
+  313.95   648.00   400.00  1276.90 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$grade: C
+    CT08     CT09     CT10 CT.total 
+      86      110      270      637 
+
+> budget.CB.by.Region.summary<-by(budget[,c("CB08","CB09","CB10","CB.total")],results.7$Region,summary)
+
+> print(budget.CB.by.Region.summary)
+results.7$Region: 영남
+      CB08            CB09            CB10          CB.total     
+ Min.   :  0.0   Min.   :  0.0   Min.   :  0.0   Min.   :  38.0  
+ 1st Qu.: 86.0   1st Qu.:196.0   1st Qu.:134.0   1st Qu.: 411.0  
+ Median :159.6   Median :260.0   Median :208.0   Median : 604.5  
+ Mean   :171.8   Mean   :267.1   Mean   :218.5   Mean   : 657.4  
+ 3rd Qu.:214.0   3rd Qu.:280.0   3rd Qu.:247.0   3rd Qu.: 772.0  
+ Max.   :487.0   Max.   :746.0   Max.   :679.0   Max.   :1749.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 중부
+      CB08             CB09             CB10           CB.total     
+ Min.   :   8.7   Min.   :  60.0   Min.   :  37.0   Min.   : 152.0  
+ 1st Qu.:  78.0   1st Qu.: 200.0   1st Qu.: 203.0   1st Qu.: 535.3  
+ Median : 215.0   Median : 305.0   Median : 268.0   Median : 864.8  
+ Mean   : 236.2   Mean   : 484.9   Mean   : 352.4   Mean   :1073.5  
+ 3rd Qu.: 298.0   3rd Qu.: 400.0   3rd Qu.: 352.0   3rd Qu.:1120.0  
+ Max.   :1323.0   Max.   :3432.0   Max.   :2525.0   Max.   :7280.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 호남
+      CB08            CB09            CB10           CB.total     
+ Min.   : 25.0   Min.   :  0.0   Min.   :   0.0   Min.   : 125.0  
+ 1st Qu.: 42.0   1st Qu.: 99.0   1st Qu.: 160.8   1st Qu.: 342.7  
+ Median :120.0   Median :207.0   Median : 267.0   Median : 710.1  
+ Mean   :182.6   Mean   :271.3   Mean   : 442.4   Mean   : 896.3  
+ 3rd Qu.:224.0   3rd Qu.:345.5   3rd Qu.: 477.5   3rd Qu.:1299.2  
+ Max.   :990.0   Max.   :961.0   Max.   :2496.0   Max.   :3393.6  
+
+> budget.CB.by.Region.trmean<-by(budget[,c("CB08","CB09","CB10","CB.total")],results.7$Region,mean, trim=5)
+
+> print(budget.CB.by.Region.trmean)
+results.7$Region: 영남
+    CB08     CB09     CB10 CB.total 
+   159.6    260.0    208.0    604.5 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 중부
+    CB08     CB09     CB10 CB.total 
+   215.0    305.0    268.0    864.8 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 호남
+    CB08     CB09     CB10 CB.total 
+  120.00   207.00   267.00   710.15 
+
+> budget.PP.by.Region.summary<-by(budget[,c("PP08","PP09","PP10","PP.total")],results.7$Region,summary)
+
+> print(budget.PP.by.Region.summary)
+results.7$Region: 영남
+      PP08             PP09             PP10           PP.total   
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0  
+ 1st Qu.:  82.0   1st Qu.: 346.0   1st Qu.: 271.0   1st Qu.: 780  
+ Median : 280.0   Median : 730.0   Median : 640.0   Median :1620  
+ Mean   : 434.9   Mean   : 819.3   Mean   : 761.3   Mean   :2015  
+ 3rd Qu.: 652.6   3rd Qu.:1209.5   3rd Qu.:1050.0   3rd Qu.:3153  
+ Max.   :1534.0   Max.   :2240.0   Max.   :2316.0   Max.   :4697  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 중부
+      PP08             PP09             PP10           PP.total     
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0.0  
+ 1st Qu.:  53.0   1st Qu.: 142.0   1st Qu.:   0.0   1st Qu.: 474.4  
+ Median : 222.0   Median : 380.0   Median : 375.8   Median :1085.9  
+ Mean   : 302.8   Mean   : 505.3   Mean   : 652.6   Mean   :1460.6  
+ 3rd Qu.: 527.0   3rd Qu.: 633.7   3rd Qu.: 605.0   3rd Qu.:1739.0  
+ Max.   :1325.0   Max.   :2113.0   Max.   :4065.0   Max.   :5813.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 호남
+      PP08             PP09             PP10           PP.total     
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0.0  
+ 1st Qu.:   0.0   1st Qu.:   0.0   1st Qu.:  66.0   1st Qu.: 417.5  
+ Median : 148.5   Median : 429.6   Median : 433.0   Median : 943.9  
+ Mean   : 381.0   Mean   : 583.5   Mean   : 522.7   Mean   :1487.2  
+ 3rd Qu.: 629.0   3rd Qu.:1195.2   3rd Qu.:1002.0   3rd Qu.:2761.8  
+ Max.   :1639.0   Max.   :1618.0   Max.   :1407.0   Max.   :4047.7  
+
+> budget.PP.by.Region.trmean<-by(budget[,c("PP08","PP09","PP10","PP.total")],results.7$Region,mean, trim=5)
+
+> print(budget.PP.by.Region.trmean)
+results.7$Region: 영남
+    PP08     PP09     PP10 PP.total 
+     280      730      640     1620 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 중부
+    PP08     PP09     PP10 PP.total 
+   222.0    380.0    375.8   1085.9 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 호남
+    PP08     PP09     PP10 PP.total 
+  148.50   429.55   433.00   943.85 
+
+> budget.PM.by.Region.summary<-by(budget[,c("PM08","PM09","PM10","PM.total")],results.7$Region,summary)
+
+> print(budget.PM.by.Region.summary)
+results.7$Region: 영남
+      PM08             PM09           PM10           PM.total   
+ Min.   :   0.0   Min.   :   0   Min.   :   0.0   Min.   : 328  
+ 1st Qu.: 252.0   1st Qu.: 630   1st Qu.: 328.0   1st Qu.:1479  
+ Median : 392.6   Median : 792   Median : 711.0   Median :2043  
+ Mean   : 438.9   Mean   : 976   Mean   : 784.2   Mean   :2199  
+ 3rd Qu.: 612.6   3rd Qu.:1358   3rd Qu.:1084.0   3rd Qu.:2965  
+ Max.   :1044.0   Max.   :2758   Max.   :1903.0   Max.   :4913  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 중부
+      PM08             PM09             PM10           PM.total   
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0  
+ 1st Qu.: 112.0   1st Qu.: 372.0   1st Qu.: 470.0   1st Qu.:1147  
+ Median : 306.0   Median : 695.0   Median : 745.9   Median :1793  
+ Mean   : 437.4   Mean   : 710.1   Mean   : 735.7   Mean   :1883  
+ 3rd Qu.: 746.0   3rd Qu.: 979.0   3rd Qu.:1000.8   3rd Qu.:2332  
+ Max.   :1109.0   Max.   :2149.0   Max.   :1659.0   Max.   :4588  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 호남
+      PM08             PM09             PM10           PM.total   
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   : 121  
+ 1st Qu.: 165.0   1st Qu.: 594.6   1st Qu.: 455.5   1st Qu.:1106  
+ Median : 274.0   Median : 829.0   Median : 966.0   Median :2240  
+ Mean   : 418.8   Mean   : 994.7   Mean   : 915.3   Mean   :2329  
+ 3rd Qu.: 591.3   3rd Qu.:1318.5   3rd Qu.:1263.5   3rd Qu.:3214  
+ Max.   :1477.0   Max.   :3948.0   Max.   :1846.0   Max.   :6011  
+
+> budget.PM.by.Region.trmean<-by(budget[,c("PM08","PM09","PM10","PM.total")],results.7$Region,mean, trim=5)
+
+> print(budget.PM.by.Region.trmean)
+results.7$Region: 영남
+    PM08     PM09     PM10 PM.total 
+   392.6    792.0    711.0   2042.7 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 중부
+    PM08     PM09     PM10 PM.total 
+   306.0    695.0    745.9   1793.0 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 호남
+    PM08     PM09     PM10 PM.total 
+  274.00   829.00   966.00  2239.85 
+
+> budget.CT.by.Region.summary<-by(budget[,c("CT08","CT09","CT10","CT.total")],results.7$Region,summary)
+
+> print(budget.CT.by.Region.summary)
+results.7$Region: 영남
+      CT08            CT09             CT10           CT.total     
+ Min.   :  0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0.0  
+ 1st Qu.: 21.0   1st Qu.:  44.0   1st Qu.:  82.0   1st Qu.: 212.0  
+ Median :240.0   Median : 250.0   Median : 270.0   Median : 914.3  
+ Mean   :258.3   Mean   : 436.3   Mean   : 533.0   Mean   :1227.6  
+ 3rd Qu.:450.0   3rd Qu.: 450.0   3rd Qu.: 549.5   3rd Qu.:1350.0  
+ Max.   :740.0   Max.   :2831.0   Max.   :3244.0   Max.   :4770.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 중부
+      CT08             CT09             CT10           CT.total     
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0.0  
+ 1st Qu.:   0.0   1st Qu.:  30.0   1st Qu.:   0.0   1st Qu.:  30.0  
+ Median : 108.0   Median : 237.6   Median : 226.7   Median : 627.9  
+ Mean   : 252.1   Mean   : 465.8   Mean   : 397.9   Mean   :1115.8  
+ 3rd Qu.: 378.0   3rd Qu.: 705.0   3rd Qu.: 571.0   3rd Qu.:1773.0  
+ Max.   :1190.0   Max.   :2441.0   Max.   :2041.0   Max.   :4524.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 호남
+      CT08             CT09             CT10           CT.total   
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0  
+ 1st Qu.:   0.0   1st Qu.:   0.0   1st Qu.: 133.8   1st Qu.: 330  
+ Median : 121.5   Median : 466.5   Median : 304.0   Median :1065  
+ Mean   : 231.0   Mean   : 528.8   Mean   : 426.6   Mean   :1186  
+ 3rd Qu.: 282.5   3rd Qu.: 847.9   3rd Qu.: 604.5   3rd Qu.:2024  
+ Max.   :1378.0   Max.   :1720.0   Max.   :1582.0   Max.   :2987  
+
+> budget.CT.by.Region.trmean<-by(budget[,c("CT08","CT09","CT10","CT.total")],results.7$Region,mean,trim=5)
+
+> print(budget.CT.by.Region.trmean)
+results.7$Region: 영남
+    CT08     CT09     CT10 CT.total 
+   240.0    250.0    270.0    914.3 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 중부
+    CT08     CT09     CT10 CT.total 
+   108.0    237.6    226.7    627.9 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$Region: 호남
+    CT08     CT09     CT10 CT.total 
+   121.5    466.5    304.0   1065.0 
+
+> budget.CB.by.class.summary<-by(budget[,c("CB08","CB09","CB10","CB.total")],results.7$class,summary)
+
+> print(budget.CB.by.class.summary)
+results.7$class: Better
+      CB08            CB09             CB10          CB.total     
+ Min.   :  0.0   Min.   :   0.0   Min.   :  0.0   Min.   :  38.0  
+ 1st Qu.: 56.0   1st Qu.: 146.0   1st Qu.:134.0   1st Qu.: 408.6  
+ Median :156.5   Median : 225.1   Median :201.0   Median : 578.1  
+ Mean   :171.3   Mean   : 278.0   Mean   :215.2   Mean   : 664.5  
+ 3rd Qu.:241.0   3rd Qu.: 322.0   3rd Qu.:286.7   3rd Qu.: 851.0  
+ Max.   :487.0   Max.   :1607.8   Max.   :518.0   Max.   :1722.8  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Middle
+      CB08             CB09            CB10          CB.total     
+ Min.   : 25.00   Min.   :100.0   Min.   :  0.0   Min.   : 125.0  
+ 1st Qu.: 71.75   1st Qu.:258.9   1st Qu.:207.3   1st Qu.: 560.5  
+ Median :145.80   Median :317.0   Median :247.0   Median : 780.0  
+ Mean   :151.80   Mean   :342.9   Mean   :310.5   Mean   : 805.3  
+ 3rd Qu.:235.50   3rd Qu.:405.2   3rd Qu.:361.0   3rd Qu.:1045.8  
+ Max.   :308.00   Max.   :690.0   Max.   :906.0   Max.   :1536.3  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Under
+      CB08             CB09           CB10           CB.total     
+ Min.   :  30.0   Min.   :   0   Min.   :  40.1   Min.   : 145.1  
+ 1st Qu.: 109.0   1st Qu.: 170   1st Qu.: 200.5   1st Qu.: 466.6  
+ Median : 159.6   Median : 260   Median : 295.0   Median : 736.0  
+ Mean   : 290.1   Mean   : 468   Mean   : 596.1   Mean   :1354.3  
+ 3rd Qu.: 295.6   3rd Qu.: 461   3rd Qu.: 676.5   3rd Qu.:1331.5  
+ Max.   :1323.0   Max.   :3432   Max.   :2525.0   Max.   :7280.0  
+
+> budget.CB.by.class.trmean<-by(budget[,c("CB08","CB09","CB10","CB.total")],results.7$class,mean,trim=5)
+
+> print(budget.CB.by.class.trmean)
+results.7$class: Better
+    CB08     CB09     CB10 CB.total 
+   156.5    225.1    201.0    578.1 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Middle
+    CB08     CB09     CB10 CB.total 
+   145.8    317.0    247.0    780.0 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Under
+    CB08     CB09     CB10 CB.total 
+   159.6    260.0    295.0    736.0 
+
+> budget.PP.by.class.summary<-by(budget[,c("PP08","PP09","PP10","PP.total")],results.7$class,summary)
+
+> print(budget.PP.by.class.summary)
+results.7$class: Better
+      PP08             PP09             PP10           PP.total   
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0  
+ 1st Qu.:  12.0   1st Qu.:   9.0   1st Qu.: 139.0   1st Qu.: 427  
+ Median : 200.0   Median : 380.0   Median : 427.0   Median :1123  
+ Mean   : 306.8   Mean   : 484.1   Mean   : 492.2   Mean   :1283  
+ 3rd Qu.: 544.0   3rd Qu.: 681.0   3rd Qu.: 605.0   3rd Qu.:2008  
+ Max.   :1624.0   Max.   :1618.0   Max.   :2062.0   Max.   :3639  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Middle
+      PP08             PP09             PP10           PP.total   
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0  
+ 1st Qu.:  57.0   1st Qu.: 347.5   1st Qu.: 119.5   1st Qu.: 606  
+ Median : 214.5   Median : 567.5   Median : 384.4   Median :1363  
+ Mean   : 326.5   Mean   : 754.5   Mean   : 639.8   Mean   :1721  
+ 3rd Qu.: 461.0   3rd Qu.:1158.4   3rd Qu.: 835.2   3rd Qu.:2538  
+ Max.   :1520.0   Max.   :2240.0   Max.   :4065.0   Max.   :5516  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Under
+      PP08             PP09             PP10           PP.total   
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0  
+ 1st Qu.:  19.0   1st Qu.:  50.0   1st Qu.: 186.3   1st Qu.: 622  
+ Median : 190.0   Median : 810.0   Median : 807.8   Median :1620  
+ Mean   : 518.2   Mean   : 751.9   Mean   : 899.1   Mean   :2169  
+ 3rd Qu.: 934.0   3rd Qu.:1238.0   3rd Qu.:1338.5   3rd Qu.:3742  
+ Max.   :1639.0   Max.   :2113.0   Max.   :2375.0   Max.   :5813  
+
+> budget.PP.by.class.trmean<-by(budget[,c("PP08","PP09","PP10","PP.total")],results.7$class,mean,trim=5)
+
+> print(budget.PP.by.class.trmean)
+results.7$class: Better
+    PP08     PP09     PP10 PP.total 
+     200      380      427     1123 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Middle
+    PP08     PP09     PP10 PP.total 
+  214.50   567.50   384.45  1363.30 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Under
+    PP08     PP09     PP10 PP.total 
+   190.0    810.0    807.8   1620.0 
+
+> budget.PM.by.class.summary<-by(budget[,c("PM08","PM09","PM10","PM.total")],results.7$class,summary)
+
+> print(budget.PM.by.class.summary)
+results.7$class: Better
+      PM08             PM09             PM10         PM.total   
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0   Min.   : 226  
+ 1st Qu.: 171.0   1st Qu.: 430.0   1st Qu.: 397   1st Qu.:1081  
+ Median : 287.0   Median : 705.0   Median : 794   Median :2018  
+ Mean   : 406.1   Mean   : 880.6   Mean   : 786   Mean   :2073  
+ 3rd Qu.: 634.8   3rd Qu.:1110.0   3rd Qu.:1045   3rd Qu.:2590  
+ Max.   :1109.0   Max.   :3948.0   Max.   :1846   Max.   :6011  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Middle
+      PM08             PM09             PM10           PM.total   
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   : 363  
+ 1st Qu.: 213.8   1st Qu.: 599.5   1st Qu.: 515.8   1st Qu.:1548  
+ Median : 396.9   Median : 760.5   Median : 765.6   Median :1984  
+ Mean   : 487.1   Mean   : 900.2   Mean   : 843.0   Mean   :2230  
+ 3rd Qu.: 698.8   3rd Qu.:1129.2   3rd Qu.:1088.7   3rd Qu.:2978  
+ Max.   :1175.0   Max.   :2006.9   Max.   :1825.0   Max.   :4199  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Under
+      PM08             PM09             PM10           PM.total   
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0  
+ 1st Qu.: 141.0   1st Qu.: 245.0   1st Qu.: 346.0   1st Qu.:1158  
+ Median : 322.0   Median : 792.0   Median : 697.2   Median :2144  
+ Mean   : 422.9   Mean   : 887.3   Mean   : 827.1   Mean   :2137  
+ 3rd Qu.: 649.0   3rd Qu.:1338.0   3rd Qu.:1314.0   3rd Qu.:3214  
+ Max.   :1477.0   Max.   :2758.0   Max.   :1903.0   Max.   :4913  
+
+> budget.PM.by.class.trmean<-by(budget[,c("PM08","PM09","PM10","PM.total")],results.7$class,mean, trim=5)
+
+> print(budget.PM.by.class.trmean)
+results.7$class: Better
+    PM08     PM09     PM10 PM.total 
+     287      705      794     2018 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Middle
+    PM08     PM09     PM10 PM.total 
+  396.90   760.50   765.60  1984.35 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Under
+    PM08     PM09     PM10 PM.total 
+   322.0    792.0    697.2   2143.7 
+
+> budget.RD.by.class.summary<-by(budget[,c("RD08","RD09","RD10","RD.total")],results.7$class,summary)
+
+> print(budget.RD.by.class.summary)
+results.7$class: Better
+      RD08             RD09            RD10          RD.total     
+ Min.   :  0.00   Min.   :  0.0   Min.   :  0.0   Min.   :   0.0  
+ 1st Qu.:  0.00   1st Qu.:  0.0   1st Qu.:  0.0   1st Qu.:   0.0  
+ Median :  0.00   Median : 30.0   Median : 20.0   Median :  55.0  
+ Mean   : 61.19   Mean   :109.7   Mean   :107.8   Mean   : 278.7  
+ 3rd Qu.: 50.00   3rd Qu.:205.0   3rd Qu.:128.0   3rd Qu.: 450.0  
+ Max.   :463.00   Max.   :569.0   Max.   :708.0   Max.   :1374.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Middle
+      RD08             RD09             RD10          RD.total    
+ Min.   :  0.00   Min.   :  0.00   Min.   :  0.0   Min.   :  0.0  
+ 1st Qu.:  0.00   1st Qu.:  0.00   1st Qu.:  0.0   1st Qu.:  0.0  
+ Median :  0.00   Median :  0.00   Median : 13.5   Median : 61.5  
+ Mean   : 57.71   Mean   : 73.33   Mean   : 52.6   Mean   :183.6  
+ 3rd Qu.:112.35   3rd Qu.:127.00   3rd Qu.: 73.1   3rd Qu.:347.2  
+ Max.   :250.00   Max.   :403.00   Max.   :269.0   Max.   :823.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Under
+      RD08             RD09             RD10           RD.total     
+ Min.   :  0.00   Min.   :   0.0   Min.   :   0.0   Min.   :   0.0  
+ 1st Qu.:  0.00   1st Qu.:   0.0   1st Qu.:   0.0   1st Qu.:   0.0  
+ Median :  0.00   Median :   0.0   Median :  66.0   Median : 220.5  
+ Mean   : 55.26   Mean   : 174.5   Mean   : 201.3   Mean   : 431.0  
+ 3rd Qu.: 89.25   3rd Qu.: 185.5   3rd Qu.: 300.0   3rd Qu.: 511.5  
+ Max.   :280.00   Max.   :1283.0   Max.   :1533.0   Max.   :2127.0  
+
+> budget.RD.by.class.trmean<-by(budget[,c("RD08","RD09","RD10","RD.total")],results.7$class,mean, trim=5)
+
+> print(budget.RD.by.class.trmean)
+results.7$class: Better
+    RD08     RD09     RD10 RD.total 
+       0       30       20       55 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Middle
+    RD08     RD09     RD10 RD.total 
+     0.0      0.0     13.5     61.5 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Under
+    RD08     RD09     RD10 RD.total 
+     0.0      0.0     66.0    220.5 
+
+> budget.CT.by.class.summary<-by(budget[,c("CT08","CT09","CT10","CT.total")],results.7$class,summary)
+
+> print(budget.CT.by.class.summary)
+results.7$class: Better
+      CT08            CT09             CT10           CT.total     
+ Min.   :  0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0.0  
+ 1st Qu.:  0.0   1st Qu.:   0.0   1st Qu.:  20.0   1st Qu.: 119.0  
+ Median : 95.0   Median : 166.0   Median : 226.7   Median : 627.9  
+ Mean   :181.8   Mean   : 399.8   Mean   : 386.9   Mean   : 968.5  
+ 3rd Qu.:243.0   3rd Qu.: 765.0   3rd Qu.: 506.0   3rd Qu.:1762.0  
+ Max.   :700.0   Max.   :1720.0   Max.   :1977.0   Max.   :2986.7  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Middle
+      CT08             CT09             CT10           CT.total     
+ Min.   :   0.0   Min.   :  30.0   Min.   :   0.0   Min.   :  30.0  
+ 1st Qu.: 114.2   1st Qu.: 220.0   1st Qu.: 216.2   1st Qu.: 748.4  
+ Median : 296.0   Median : 441.0   Median : 402.1   Median :1250.9  
+ Mean   : 391.0   Mean   : 644.7   Mean   : 634.7   Mean   :1670.4  
+ 3rd Qu.: 579.5   3rd Qu.: 838.2   3rd Qu.: 566.8   3rd Qu.:2559.7  
+ Max.   :1378.0   Max.   :2441.0   Max.   :3244.0   Max.   :4770.0  
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Under
+      CT08             CT09             CT10           CT.total   
+ Min.   :   0.0   Min.   :   0.0   Min.   :   0.0   Min.   :   0  
+ 1st Qu.:   0.0   1st Qu.:   0.0   1st Qu.:   0.0   1st Qu.:   0  
+ Median :   0.0   Median : 240.0   Median : 145.0   Median : 645  
+ Mean   : 222.7   Mean   : 458.0   Mean   : 378.3   Mean   :1059  
+ 3rd Qu.: 398.9   3rd Qu.: 545.5   3rd Qu.: 530.0   3rd Qu.:1335  
+ Max.   :1190.0   Max.   :2831.0   Max.   :2041.0   Max.   :4622  
+
+> budget.CT.by.class.trmean<-by(budget[,c("CT08","CT09","CT10","CT.total")],results.7$class, mean, trim=5)
+
+> print(budget.CT.by.class.trmean)
+results.7$class: Better
+    CT08     CT09     CT10 CT.total 
+    95.0    166.0    226.7    627.9 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Middle
+    CT08     CT09     CT10 CT.total 
+   296.0    441.0    402.1   1250.9 
+-------------------------------------------------------------------------------------------------------------------------------------------------- 
+results.7$class: Under
+    CT08     CT09     CT10 CT.total 
+       0      240      145      645 
+> 
